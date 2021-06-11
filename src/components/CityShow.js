@@ -1,4 +1,5 @@
 import { Col, Card, Button, Title } from "react-bootstrap";
+import PostList from './PostList';
 
 function CityShow(props) {
   return (
@@ -12,6 +13,9 @@ function CityShow(props) {
           </Card.Text>
             <img width="100px" className="city-image" src={props.city.photo} alt={props.city.name} />
           {/* <Button variant="danger" onClick={() => deleteCity(_id)}>Delete</Button> */}
+          <div>
+            <PostList posts={props.city.posts} />
+          </div>
         </Card.Body>
       </Card>
     </Col>
