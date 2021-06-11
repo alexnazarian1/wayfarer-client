@@ -8,10 +8,10 @@ import Login from '../pages/Login'
 function Routes(props) {
   return (
     <Switch>
-      <Route exact path='/' component={Home} />
-      <Route path='/login' component={Login} />
+      {/* <Route exact path='/' component={Home} /> */}
+      {/* <Route path='/login' component={Login} /> */}
       <Route path='/cities' component={CitiesIndex} />
-      <Route path='/createpost' component={CreatePost} />
+      {/* <Route path='/createpost' component={CreatePost} /> */}
     </Switch>
   );
 }
