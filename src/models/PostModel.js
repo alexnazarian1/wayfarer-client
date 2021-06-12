@@ -6,6 +6,16 @@ class PostModel {
         const request = axios.post(url, post);
         return request;
     }
+    static show(postId) {
+        return fetch(`${url}/${postId}`)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('data: ', data);
+
+            return data;
+        })
+    }
 }
+
 
 export default PostModel;
