@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import CitiesIndex from '../pages/CitiesIndex';
-import CreatePost from '../pages/CreatePost';
+// import CreatePost from '../pages/CreatePost';
 import Login from '../pages/Login'
 
 function Routes(props) {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import PostModel from '../models/PostModel';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -46,17 +45,13 @@ class CreatePost extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        PostModel.create({
+        this.handleClose();
+        this.props.handleNewPost({
             user: this.state.user,
             title: this.state.title,
             body: this.state.body,
             cityId: this.props.city._id,
-        })
-            .then(request => {
-                this.setState({
-                    redirect: true,
-                })
-            });
+        });
     }
 
     render() {
@@ -117,16 +112,7 @@ class CreatePost extends React.Component {
                         </Button>
                     </Form>
 
-
               </Modal.Body>
-              {/* <Modal.Footer>
-                <Button variant="secondary" onClick={this.handleClose}>
-                  Close
-                </Button>
-                <Button variant="primary" onClick={this.handleSubmit}>
-                  Submit
-                </Button>
-              </Modal.Footer> */}
             </Modal>
           </>
         );

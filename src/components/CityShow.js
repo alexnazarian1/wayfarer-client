@@ -14,7 +14,7 @@ function CityShow(props) {
           </Card.Text>
             <img width="100px" className="city-image" src={props.city.photo} alt={props.city.name} />
           {/* <Button variant="danger" onClick={() => deleteCity(_id)}>Delete</Button> */}
-            <CreatePost city={props.city} />
+            <CreatePost city={props.city} handleNewPost={props.handleNewPost} />
             <PostList posts={props.city.posts} />
         </Card.Body>
       </Card>
