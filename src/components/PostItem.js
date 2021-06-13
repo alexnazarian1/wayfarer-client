@@ -1,4 +1,6 @@
-function PostCard(props) {
+import ListGroup from 'react-bootstrap/ListGroup';
+
+function PostItem(props) {
     const ms = Date.now() - Date.parse(props.post.createdAt);
     let days = Math.floor(ms/(1000*60*60*24));
     if (days === 0) {
@@ -7,12 +9,12 @@ function PostCard(props) {
         days = `${days} days ago`;
     };
     return (
-        <div>
-            <h3>{props.post.title} by {props.post.user}</h3>
+        <ListGroup.Item className="post">
+            <h5>{props.post.title} by {props.post.user}</h5>
             <p>{props.post.body}</p>
             <p>Posted: {days}</p>
-        </div>
+        </ListGroup.Item>
     );
 };
 
-export default PostCard;
+export default PostItem;

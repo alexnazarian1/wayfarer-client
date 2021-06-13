@@ -2,7 +2,8 @@ import React from 'react';
 import CityModel from '../models/CityModel';
 import PostModel from '../models/PostModel';
 import CityList from '../components/CityList';
-import CityShow from '../components/CityShow';
+
+import { Container } from "react-bootstrap";
 
 class CitiesIndex extends React.Component {
     state = {
@@ -36,19 +37,12 @@ class CitiesIndex extends React.Component {
         this.fetchCityData();
     }
 
-    handleClickyChange = (e) => {
-        const index = e.target.className.slice(4);
-        this.setState({
-            show: this.state.cities[index],
-        });
-    }
-
     handleNewPost = (post, city) => {
         PostModel.create(post)
             .then(response => {
                 const newPost = response.data.post;
                 let cities = this.state.cities;
-                cities = cities.filter(city => city._id !== city._id);
+                cities = cities.filter(city => city._id !== response._id);
                 city.posts.push(newPost);
                 cities.push(city);
                 this.setState({
@@ -60,10 +54,9 @@ class CitiesIndex extends React.Component {
     render() {
         if (this.state.cities.length === 0) return <h1>No Cities Found</h1>
         return (
-            <div>
-                <CityList cities={this.state.cities} handleClickyChange={this.handleClickyChange} />
-                <CityShow city={this.state.show} handleNewPost={this.handleNewPost} />
-            </div>
+            <Container>
+                <CityList cities={this.state.cities} handleNewPost={this.handleNewPost} />
+            </Container>
         );
     }
 }

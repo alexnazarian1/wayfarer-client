@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { PlusCircle } from 'react-bootstrap-icons';
 
 class CreatePost extends React.Component {
     state = {
@@ -10,12 +11,14 @@ class CreatePost extends React.Component {
         user: '',
         title: '',
         body: '',
-        redirect: false,
     }
 
     handleClose = () => {
         this.setState({
             show: false,
+            user: '',
+            title: '',
+            body: '',
         });
     }
 
@@ -61,7 +64,7 @@ class CreatePost extends React.Component {
         return (
           <>
             <Button variant="primary" onClick={this.handleShow}>
-              Add Post
+                <PlusCircle className="posts-plus" />
             </Button>
             <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>
