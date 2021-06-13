@@ -2,88 +2,99 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import PostModel from '../models/PostModel'
+import PostModel from '../models/PostModel';
+import { Redirect } from 'react-router-dom';
 
 class EditPost extends React.Component {
 
   state = {
-    post: null
+    _id: '',
+    city: '',
+    title: '',
+    user: '',
+    body: '',
+    redirect: false,
   }
 
   componentDidMount() {
     PostModel.show(this.props.match.params.id)
       .then((data) => {
-        console.log('data:', data)
+        // console.log('data:', data)
         this.setState({
-          post: data.post
+          _id: data.post._id,
+          city: data.post.city,
+          title: data.post.title,
+          user: data.post.user,
+          body: data.post.body,
         });
       })
   }
 
   handleChange = (event) => {
-    if (event.target.type === 'checkbox') {
-      this.setState({ completed: !this.state.completed });
-    } else {
       this.setState({ [event.target.name]: event.target.value });
     }
+  
+    handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(this.state);
+      PostModel.update({
+        _id: this.state._id,
+        city: this.state.city,
+        title: this.state.title,
+        user: this.state.user,
+        body: this.state.body,
+      })
+        .then(response => {
+          this.setState({
+            redirect: true
+          })
+        })
+
   }
 
   render() {
-    console.log('props', this.props);
+    // console.log('props', this.props);
+    if (this.state.redirect) {
+      return <Redirect to={`/posts/${this.state._id}/`}/>
+    }
+    if (this.state.city.length === 0) {
+      return <h2>No post to edit</h2>
+    }
+
     return (
       <main>
         <h2>Create a New Post</h2>
 
-        {/* <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           
           <div className="form-input">
-            <label htmlFor="city">City:</label>
-            <input 
-              type="text" 
-              name="city"
-              value={this.state.post.title}
-              onChange={this.handleChange}
-            />
+            <label htmlFor="city">City: {this.state.city}</label>
           </div>
-
           <div className="form-input">
-            <label htmlFor="user">Author</label>
-            <input 
-              type="text" 
-              name="user" 
-              onChange={this.handleChange}
-              value={this.state.post.user} />
+            <label htmlFor="user">Author: {this.state.user}</label>
           </div>
-
-          <div className="form-input">
-            <label htmlFor="body">Body</label>
-            <input 
-              type="text" 
-              name="body" 
-              onChange={this.handleChange}
-              value={this.state.post.body} />
-          </div> */}
-{/* 
           <div className="form-input">
             <label htmlFor="title">Title</label>
             <input 
               type="text" 
               name="title" 
               onChange={this.handleChange}
-              value={this.state.post.title} />
+              value={this.state.title} />
           </div>
+
 
           <div className="form-input">
-            <label htmlFor="completed">Completed</label>
-            <input 
-              type="checkbox"
-              id="completed"
-              checked={this.state.completed} 
-              onChange={this.handleChange} />
+            <label htmlFor="body">Body</label>
+            <textarea 
+              type="text" 
+              name="body" 
+              onChange={this.handleChange}
+              value={this.state.body}>
+            </textarea>
           </div>
 
-          <button type="submit">Create</button>
-        </Form> */}
+          <button type="submit">Submit Edit</button>
+        </Form>
       </main>
     );
   }

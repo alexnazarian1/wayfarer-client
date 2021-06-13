@@ -1,5 +1,6 @@
 import React from 'react';
 import PostModel from '../models/PostModel';
+import { Link } from 'react-router-dom';
 
 class PostShow extends React.Component {
 
@@ -30,6 +31,9 @@ class PostShow extends React.Component {
         <p>{this.state.post.city}</p>
         <p>Author: {this.state.post.user}</p>
         <p>{this.state.post.body}</p>
+        <Link to={`/posts/${this.state.post._id}/edit`}>
+        <button>Edit Post</button>
+        </Link>
       </main>
     );
   }

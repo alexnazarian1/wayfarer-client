@@ -54,7 +54,7 @@ article {
   width: 100%;
   height: 400px;
   object-fit: fill;
-
+}
 .post-actions {
   display: flex;
   justify-content: flex-end;

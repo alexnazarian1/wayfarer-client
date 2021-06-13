@@ -15,6 +15,10 @@ class PostModel {
             return data;
         })
     }
+    static update(post) {
+        const request = axios.put(`${url}/${post._id}`, post);
+        return request;
+    }
 }
 
 
