@@ -1,4 +1,5 @@
 import ListGroup from 'react-bootstrap/ListGroup';
+import { Link } from 'react-router-dom';
 
 function PostItem(props) {
     const ms = Date.now() - Date.parse(props.post.createdAt);
@@ -10,7 +11,7 @@ function PostItem(props) {
     };
     return (
         <ListGroup.Item className="post">
-            <h5>{props.post.title} by {props.post.user}</h5>
+            <h5><Link to={`/posts/${props.post._id}`} >{props.post.title}</Link> by {props.post.user}</h5>
             <p>{props.post.body}</p>
             <p>Posted: {days}</p>
         </ListGroup.Item>

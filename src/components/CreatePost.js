@@ -2,6 +2,8 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { PlusCircle } from 'react-bootstrap-icons';
 
 class CreatePost extends React.Component {
@@ -59,9 +61,7 @@ class CreatePost extends React.Component {
     render() {
         return (
           <>
-            <Button variant="primary" onClick={this.handleShow}>
-                <PlusCircle className="posts-plus" />
-            </Button>
+            <PlusCircle className="posts-plus" onClick={this.handleShow} />
             <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add a Post for {this.props.city.name}</Modal.Title>
@@ -103,12 +103,16 @@ class CreatePost extends React.Component {
                                 />
                         </Form.Group>
 
-                        <Button variant="secondary" onClick={this.handleClose}>
-                            Close
-                        </Button>
-                        <Button type="submit" variant="primary">
-                            Submit
-                        </Button>
+                        <Row>
+                            <Col className="post-actions">
+                                <Button variant="secondary" onClick={this.handleClose}>
+                                    Close
+                                </Button>
+                                <Button className="post-submit" type="submit" variant="primary">
+                                    Submit
+                                </Button>
+                            </Col>
+                        </Row>
                     </Form>
 
               </Modal.Body>

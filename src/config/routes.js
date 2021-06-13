@@ -12,8 +12,8 @@ function Routes(props) {
       {/* <Route path='/login' component={Login} /> */}
       <Route path='/cities' component={CitiesIndex} />
       {/* <Route path='/createpost' component={CreatePost} /> */}
-      <Route path='/post/:id' component={PostShow} />
-      <Route path='/post/:id/edit' component={EditPost} />
+      <Route path='/posts/:id/edit' component={EditPost} />
+      <Route path='/posts/:id' component={PostShow} />
     </Switch>
   );
 }

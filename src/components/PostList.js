@@ -29,13 +29,30 @@ class PostList extends React.Component {
     }
 
     render() {
-        if (this.state.posts == null) {
-            return (<h3>No posts yet. Add one!</h3>)
+        if (!this.state.posts) {
+            return <h3>Loading posts...</h3>
         };
         const sortedPosts = this.state.posts.sort((a,b) => Date.parse(b.createdAt)-Date.parse(a.createdAt));
         const postItems = sortedPosts.map(post => {
             return <PostItem key={post._id} post={post} />
-        })
+        });
+        if (postItems.length === 0) {
+            return (
+                <>
+                <Row>
+                    <Col className="posts-header">
+                        <h3>Posts</h3>
+                        <CreatePost city={this.props.city} handleNewPost={this.handlePostSubmit} />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                    <h5>No posts yet. Add one!</h5>
+                    </Col>
+                </Row>
+            </>
+            )
+        };
         return (
             <>
                 <Row>
