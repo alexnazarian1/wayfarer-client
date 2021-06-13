@@ -14,7 +14,7 @@ function CityList(props) {
         return <CityTabPane key={city._id} city={city} />
     });
     return (
-            <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
+            <Tab.Container id="city-tabs" defaultActiveKey={`#${props.cities[0].urlName}`}>
             <Row>
                 <Col sm={4}>
                     <ListGroup>
