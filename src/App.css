@@ -21,8 +21,19 @@ h2 {
 .posts-plus {
   font-size: 30px;
   cursor: pointer;
+  transition: color .3s;
+}
+.posts-plus:hover {
+  color: orangered;
 }
 .post {
   flex-direction: column;
   align-items: flex-start;
+}
+.post-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+.post-submit {
+  margin-left: 20px;
 }

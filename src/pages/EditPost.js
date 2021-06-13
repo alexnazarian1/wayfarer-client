@@ -11,17 +11,14 @@ class EditPost extends React.Component {
   }
 
   componentDidMount() {
-    
     PostModel.show(this.props.match.params.id)
       .then((data) => {
         console.log('data:', data)
-
         this.setState({
           post: data.post
         });
       })
   }
-
 
   handleChange = (event) => {
     if (event.target.type === 'checkbox') {
@@ -33,7 +30,6 @@ class EditPost extends React.Component {
 
   render() {
     console.log('props', this.props);
-
     return (
       <main>
         <h2>Create a New Post</h2>
