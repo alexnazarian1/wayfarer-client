@@ -51,7 +51,7 @@ class CreatePost extends React.Component {
             title: this.state.title,
             body: this.state.body,
             cityId: this.props.city._id,
-        });
+        }, this.props.city);
     }
 
     render() {

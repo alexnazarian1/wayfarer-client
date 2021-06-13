@@ -11,26 +11,19 @@ class CitiesIndex extends React.Component {
         error: null,
     }
 
-    fetchCityData = (indicator) => {
+    fetchCityData = () => {
         CityModel.all()
             .then(response => {
                 if (response.data.message) {
                     this.setState({
                         error: response.data.message,
                     });
-                } else if (indicator === 0) {
+                } else {
                     this.setState({
                         cities: response.data.cities,
                         show: response.data.cities[0],
                     });
-                } else {
-                    const cities = response.data.cities;
-                    const showCity = cities.filter(city => city._id === indicator);
-                    this.setState({
-                        cities: cities,
-                        show: showCity[0],
-                    })
-                }
+                };
             })
             .catch(err => {
                 this.setState({
@@ -40,7 +33,7 @@ class CitiesIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.fetchCityData(0);
+        this.fetchCityData();
     }
 
     handleClickyChange = (e) => {
@@ -50,10 +43,17 @@ class CitiesIndex extends React.Component {
         });
     }
 
-    handleNewPost = (post) => {
+    handleNewPost = (post, city) => {
         PostModel.create(post)
-            .then(request => {
-                this.fetchCityData(post.cityId);
+            .then(response => {
+                const newPost = response.data.post;
+                let cities = this.state.cities;
+                cities = cities.filter(city => city._id !== city._id);
+                city.posts.push(newPost);
+                cities.push(city);
+                this.setState({
+                    cities: cities,
+                });
             });
     }
 
