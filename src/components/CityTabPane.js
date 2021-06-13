@@ -14,7 +14,7 @@ function CityTabPane(props) {
             <Image className="image-show" src={props.city.photo} alt={props.city.name} />
           </Col>
         </Row>
-        <PostList city={props.city} handleNewPost={props.handleNewPost}/>
+        <PostList city={props.city} />
     </Tab.Pane>
   );
 }

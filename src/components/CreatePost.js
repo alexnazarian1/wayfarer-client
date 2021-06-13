@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -54,13 +53,10 @@ class CreatePost extends React.Component {
             title: this.state.title,
             body: this.state.body,
             cityId: this.props.city._id,
-        }, this.props.city);
+        });
     }
 
     render() {
-        if (this.state.redirect) {
-            return <Redirect to="/cities" />
-        }
         return (
           <>
             <Button variant="primary" onClick={this.handleShow}>

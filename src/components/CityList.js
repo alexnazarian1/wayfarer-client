@@ -11,20 +11,20 @@ function CityList(props) {
         return <CityListGroupItem key={city._id} city={city} />
     });
     const cityTabPanes = props.cities.map((city, index) => {
-        return <CityTabPane key={city._id} city={city} handleNewPost={props.handleNewPost} />
+        return <CityTabPane key={city._id} city={city} />
     });
     return (
             <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
             <Row>
                 <Col sm={4}>
-                <ListGroup>
-                    { cityListItems }
-                </ListGroup>
+                    <ListGroup>
+                        { cityListItems }
+                    </ListGroup>
                 </Col>
                 <Col sm={8}>
-                <Tab.Content>
-                    { cityTabPanes }
-                </Tab.Content>
+                    <Tab.Content>
+                        { cityTabPanes }
+                    </Tab.Content>
                 </Col>
             </Row>
             </Tab.Container>

@@ -1,6 +1,5 @@
 import React from 'react';
 import CityModel from '../models/CityModel';
-import PostModel from '../models/PostModel';
 import CityList from '../components/CityList';
 
 import { Container } from "react-bootstrap";
@@ -37,25 +36,11 @@ class CitiesIndex extends React.Component {
         this.fetchCityData();
     }
 
-    handleNewPost = (post, city) => {
-        PostModel.create(post)
-            .then(response => {
-                const newPost = response.data.post;
-                let cities = this.state.cities;
-                cities = cities.filter(city => city._id !== response._id);
-                city.posts.push(newPost);
-                cities.push(city);
-                this.setState({
-                    cities: cities,
-                });
-            });
-    }
-
     render() {
         if (this.state.cities.length === 0) return <h1>No Cities Found</h1>
         return (
             <Container>
-                <CityList cities={this.state.cities} handleNewPost={this.handleNewPost} />
+                <CityList cities={this.state.cities} />
             </Container>
         );
     }
