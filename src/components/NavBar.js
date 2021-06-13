@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function NavBar(props) {
   return (
     <Navbar bg="dark" variant="dark" className="mb-4">
-      {/* <Container> */}
+      <Container>
         <Navbar.Brand>Wayfarer</Navbar.Brand>
         <Nav className="ml-auto">
           <NavLink className="nav-link" exact to="/">
@@ -27,7 +27,7 @@ function NavBar(props) {
             Signup
           </NavLink>
         </Nav>
-      {/* </Container> */}
+      </Container>
     </Navbar>
   );
 }
