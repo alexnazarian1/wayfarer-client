@@ -10,8 +10,10 @@ import './App.css';
 class App extends React.Component {
   state = {
     loginModalShow: false,
-    authedUser: null,
-    isAdmin: false,
+    auth: {
+      user: null,
+      isAdmin: false,
+    },
     error: null,
   }
 
@@ -27,30 +29,50 @@ class App extends React.Component {
       });
   }
 
+  storeLogin = (user, isAdmin, message) => {
+    const auth = {
+      user: user,
+      isAdmin: isAdmin,
+    };
+    this.setState({
+      auth: auth,
+      error: message,
+    });
+    localStorage.setItem('auth', JSON.stringify(auth));
+  }
+
+  clearLogin = () => {
+    localStorage.clear();
+    this.setState({
+      auth: {
+        user: null,
+        isAdmin: false,
+      },
+      error: null,
+    })
+  }
+
   handleLogin = (user) => {
     UserModel.login(user)
       .then(response => {
-        if (response.data.message) {
-          this.setState({
-            error: response.data.message,
-            isAdmin: false,
-            authedUser: null,
-          });
-        } else {
-          this.setState({
-            authedUser: response.data.authedUser,
-            isAdmin: Boolean(response.data.isAdmin),
-            error: null,
-          })
-        };
+        this.storeLogin(response.data.authedUser, Boolean(response.data.isAdmin), response.data.message);
       })
       .catch(err => {
         this.setState({
+          auth: {
+            user: null,
+            isAdmin: false,
+          },
           error: err.message,
-          isAdmin: false,
-          authedUser: null,
         });
       });
+  }
+
+  componentDidMount() {
+    const auth = JSON.parse(localStorage.getItem('auth'));
+    if (auth) {
+      this.storeLogin(auth.user, auth.isAdmin);
+    };
   }
 
   render() {
@@ -60,7 +82,10 @@ class App extends React.Component {
           handleShow={this.handleShow} 
           handleClose={this.handleClose} 
           loginModalShow={this.state.loginModalShow} 
-          handleLogin={this.handleLogin} />
+          handleLogin={this.handleLogin} 
+          storeLogin={this.storeLogin}
+          logout={this.clearLogin}
+          />
         <main>
         {this.state.error ? <h1>{this.state.error}</h1> : ''}
           <Routes />
