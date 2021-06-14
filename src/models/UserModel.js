@@ -6,6 +6,11 @@ class UserModel {
         const request = axios.post(`${url}/login`, user);
         return request;
     }
+
+    static create = (user) => {
+        const request = axios.post(url, user);
+        return request;
+    }
 };
 
 export default UserModel;
