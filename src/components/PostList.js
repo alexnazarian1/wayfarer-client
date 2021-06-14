@@ -9,6 +9,7 @@ import { Col, Row } from 'react-bootstrap';
 class PostList extends React.Component {
     state = {
         posts: null,
+        error: null,
     }
 
     componentDidMount() {
@@ -20,15 +21,29 @@ class PostList extends React.Component {
     handlePostSubmit = (post) => {
         PostModel.create(post)
             .then(response => {
-                let posts = this.state.posts;
-                posts.push(response.data.post);
+                if (response.data.message) {
+                    this.setState({
+                        error: response.data.message,
+                    })
+                } else {
+                    let posts = this.state.posts;
+                    posts.push(response.data.post);
+                    this.setState({
+                        posts: posts,
+                    });
+                };
+            })
+            .catch(err => {
                 this.setState({
-                    posts: posts,
+                    error: err.message,
                 });
             });
     }
 
     render() {
+        if (this.state.error) {
+            return <h3>{this.state.error}</h3>
+        }
         if (!this.state.posts) {
             return <h3>Loading posts...</h3>
         };

@@ -23,28 +23,16 @@ class CreatePost extends React.Component {
         });
     }
 
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value,
+        });
+    }
+
     handleShow = (e) => {
         this.setState({
             show: true,
         });
-    }
-
-    handleUserChange = (e) => {
-        this.setState({
-            user: e.target.value,
-        });
-    }
-
-    handleTitleChange = (e) => {
-        this.setState({
-            title: e.target.value,
-        });
-    }
-
-    handleBodyChange = (e) => {
-        this.setState({
-            body: e.target.value,
-        })
     }
 
     handleSubmit = (e) => {
@@ -76,7 +64,7 @@ class CreatePost extends React.Component {
                                 name="user" 
                                 placeholder="What do we call you?"
                                 value={this.state.user}
-                                onChange={this.handleUserChange}
+                                onChange={this.handleChange}
                                 />
                         </Form.Group>
 
@@ -87,7 +75,7 @@ class CreatePost extends React.Component {
                                 name="title" 
                                 placeholder="What's this all about?"
                                 value={this.state.title}
-                                onChange={this.handleTitleChange}
+                                onChange={this.handleChange}
                                 />
                         </Form.Group>
 
@@ -99,7 +87,7 @@ class CreatePost extends React.Component {
                                 name="body" 
                                 placeholder="Share it here!" 
                                 value={this.state.body}
-                                onChange={this.handleBodyChange}
+                                onChange={this.handleChange}
                                 />
                         </Form.Group>
 
