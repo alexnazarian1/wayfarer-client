@@ -85,6 +85,7 @@ class App extends React.Component {
           handleLogin={this.handleLogin} 
           storeLogin={this.storeLogin}
           logout={this.clearLogin}
+          auth={this.state.auth}
           />
         <main>
         {this.state.error ? <h1>{this.state.error}</h1> : ''}

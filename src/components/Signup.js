@@ -66,7 +66,7 @@ class Signup extends React.Component {
     render() {
         return (
             <Form onSubmit={this.handleSubmit}>
-                <h2><strong>Signup</strong></h2>
+                <h2><strong>Sign Up</strong></h2>
                 <Form.Group controlId="user">
                     <Form.Label>Username</Form.Label>
                     <Form.Control 
@@ -120,7 +120,7 @@ class Signup extends React.Component {
                 <Row>
                     <Col className="post-actions">
                         <Button className="post-submit" type="submit" variant="primary">
-                            Submit
+                            Sign Up
                         </Button>
                     </Col>
                 </Row>

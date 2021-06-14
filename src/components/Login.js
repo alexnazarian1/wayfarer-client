@@ -57,7 +57,7 @@ class Login extends React.Component {
                 <Row>
                     <Col className="post-actions">
                         <Button className="post-submit" type="submit" variant="primary">
-                            Submit
+                            Login
                         </Button>
                     </Col>
                 </Row>
