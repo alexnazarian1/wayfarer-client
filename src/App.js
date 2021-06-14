@@ -1,6 +1,7 @@
 import React from 'react';
 
 import UserModel from './models/UserModel';
+import CityModel from './models/CityModel';
 import Routes from './config/routes';
 import NavBar from './components/NavBar'
 
@@ -15,6 +16,7 @@ class App extends React.Component {
       isAdmin: false,
     },
     error: null,
+    cities: [],
   }
 
   handleClose = () => {
@@ -68,11 +70,33 @@ class App extends React.Component {
       });
   }
 
+  fetchCityData = () => {
+    CityModel.all()
+        .then(response => {
+            if (response.data.message) {
+                this.setState({
+                    error: response.data.message,
+                });
+            } else {
+                this.setState({
+                    cities: response.data.cities,
+                    // show: response.data.cities[0],
+                });
+            };
+        })
+        .catch(err => {
+            this.setState({
+                error: err.message,
+            });
+        });
+}
+
   componentDidMount() {
     const auth = JSON.parse(localStorage.getItem('auth'));
     if (auth) {
       this.storeLogin(auth.user, auth.isAdmin);
     };
+    this.fetchCityData();
   }
 
   render() {
@@ -89,7 +113,7 @@ class App extends React.Component {
           />
         <main>
         {this.state.error ? <h1>{this.state.error}</h1> : ''}
-          <Routes />
+        <Routes cities={this.state.cities}/>
         </main>
       </>
     );

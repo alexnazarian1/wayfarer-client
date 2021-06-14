@@ -12,7 +12,7 @@ class CommentList extends React.Component {
 
   componentDidMount() {
     this.setState({
-        comments: this.props.comments
+        comments: this.props.comments,
     });
 }
 
@@ -38,7 +38,6 @@ class CommentList extends React.Component {
             });
   }
 
-  
   render() {
     if (this.state.error) {
       return <h3>{this.state.error}</h3>
@@ -46,16 +45,18 @@ class CommentList extends React.Component {
     if (!this.state.comments) {
       return <h3>Loading comments...</h3>
     };
-    const commentItems = this.props.comments.map(comment => {
+    const sortedComments = this.state.comments.sort((a,b) => Date.parse(b.createdAt)-Date.parse(a.createdAt));
+    const commentItems = sortedComments.map(comment => {
       return <CommentItem comment={comment} />
     });
-    const sortedComments = this.state.comments.sort((a,b) => Date.parse(b.createdAt)-Date.parse(a.createdAt));
-    
     return (
-      <>
-        <CreateComment />
+      <div>
+        <div>
+          <h3>Comments</h3>
+          <CreateComment handleCommentSubmit={this.handleCommentSubmit} post={this.props.post}/>
+        </div>
         {commentItems}
-      </>
+      </div>
     )
   }
 };

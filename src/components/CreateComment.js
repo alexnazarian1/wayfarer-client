@@ -11,6 +11,7 @@ class CreateComment extends React.Component {
         show: false,
         user: '',
         body: '',
+        post: '',
     }
 
     handleClose = () => {
@@ -39,7 +40,7 @@ class CreateComment extends React.Component {
         this.props.handleCommentSubmit({
             user: this.state.user,
             body: this.state.body,
-            cityId: this.props.city._id,
+            post: this.props.post._id,
         });
     }
 
@@ -49,10 +50,9 @@ class CreateComment extends React.Component {
             <PlusCircle className="posts-plus" onClick={this.handleShow} />
             <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add a Post for {this.props.city.name}</Modal.Title>
+                    <Modal.Title>Add a Comment for <strong>{this.props.post.title}</strong></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-              
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Group controlId="user">
                             <Form.Label>Username</Form.Label>
@@ -88,7 +88,6 @@ class CreateComment extends React.Component {
                             </Col>
                         </Row>
                     </Form>
-
               </Modal.Body>
             </Modal>
           </>
