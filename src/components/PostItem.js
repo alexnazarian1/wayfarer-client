@@ -1,6 +1,7 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Link } from 'react-router-dom';
 
+
 function PostItem(props) {
     const ms = Date.now() - Date.parse(props.post.createdAt);
     let days = Math.floor(ms/(1000*60*60*24));

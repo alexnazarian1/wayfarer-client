@@ -1,7 +1,9 @@
 import React from 'react';
 import PostModel from '../models/PostModel';
+import CommentModel from '../models/CommentModel';
 import { Link, Redirect } from 'react-router-dom';
 import DeletePostAlert from '../components/DeletePostAlert';
+import CommentList from '../components/CommentList'
 
 class PostShow extends React.Component {
 
@@ -76,6 +78,7 @@ class PostShow extends React.Component {
           title={this.state.post.title} 
           handleDeleteConfirm={this.handleDeleteConfirm}
         />
+          <CommentList comments={this.state.post.comments} />
       </main>
     );
   }
