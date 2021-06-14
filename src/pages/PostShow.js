@@ -10,7 +10,8 @@ class PostShow extends React.Component {
     redirect: false,
     alertStyle: {
       display: 'none',
-    }
+    },
+    error: null,
   }
 
   componentDidMount() {
@@ -33,13 +34,27 @@ class PostShow extends React.Component {
   handleDeleteConfirm = () => {
     PostModel.delete(this.state.post._id)
       .then(response => {
+        if (response.data.message) {
+          this.setState({
+            error: response.data.message,
+          });
+        } else {
+          this.setState({
+            redirect: true,
+          });
+        }
+      })
+      .catch(err=> {
         this.setState({
-          redirect: true,
+          error: err.message,
         });
       });
   }
 
   render() {
+    if (this.state.error) {
+      return <h2>{this.state.error}</h2>
+    }
     if (this.state.redirect) {
       return <Redirect to="/cities" />
     };

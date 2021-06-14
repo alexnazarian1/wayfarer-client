@@ -14,12 +14,12 @@ class EditPost extends React.Component {
     user: '',
     body: '',
     redirect: false,
+    error: null,
   }
 
   componentDidMount() {
     PostModel.show(this.props.match.params.id)
       .then((data) => {
-        // console.log('data:', data)
         this.setState({
           _id: data.post._id,
           city: data.post.city,
@@ -36,7 +36,6 @@ class EditPost extends React.Component {
   
     handleSubmit = (e) => {
       e.preventDefault();
-      console.log(this.state);
       PostModel.update({
         _id: this.state._id,
         city: this.state.city,
@@ -45,22 +44,33 @@ class EditPost extends React.Component {
         body: this.state.body,
       })
         .then(response => {
-          this.setState({
-            redirect: true
-          })
+          if (response.data.message) {
+            this.setState({
+              error: response.data.message,
+            });
+          } else {
+            this.setState({
+              redirect: true
+            });
+          };
         })
-
+        .catch(err => {
+          this.setState({
+            error: err.message,
+          });
+        });
   }
 
   render() {
-    // console.log('props', this.props);
+    if (this.state.error) {
+      return <h2>{this.state.error}</h2>
+    };
     if (this.state.redirect) {
       return <Redirect to={`/posts/${this.state._id}/`}/>
-    }
+    };
     if (this.state.city.length === 0) {
       return <h2>No post to edit</h2>
-    }
-
+    };
     return (
       <main>
         <h2>Create a New Post</h2>
