@@ -57,7 +57,7 @@ class PostList extends React.Component {
                 <Row>
                     <Col className="posts-header">
                         <h3>Posts</h3>
-                        <CreatePost city={this.props.city} handleNewPost={this.handlePostSubmit} />
+                        <CreatePost city={this.props.city} handlePostSubmit={this.handlePostSubmit} />
                     </Col>
                 </Row>
                 <Row>
@@ -73,7 +73,7 @@ class PostList extends React.Component {
                 <Row>
                     <Col className="posts-header">
                         <h3>Posts</h3>
-                        <CreatePost city={this.props.city} handleNewPost={this.handlePostSubmit} />
+                        <CreatePost city={this.props.city} handlePostSubmit={this.handlePostSubmit} />
                     </Col>
                 </Row>
                 <Row>

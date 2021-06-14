@@ -1,6 +1,6 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 
-function Comment(props) {
+function CommentItem(props) {
   console.log(props.comment)
   const ms = Date.now() - Date.parse(props.comment.createdAt);
   let days = Math.floor(ms/(1000*60*60*24));
@@ -22,4 +22,4 @@ function Comment(props) {
   )
 };
 
-export default Comment;
+export default CommentItem;

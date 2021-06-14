@@ -6,11 +6,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { PlusCircle } from 'react-bootstrap-icons';
 
-class CreatePost extends React.Component {
+class CreateComment extends React.Component {
     state = {
         show: false,
         user: '',
-        title: '',
         body: '',
     }
 
@@ -18,7 +17,6 @@ class CreatePost extends React.Component {
         this.setState({
             show: false,
             user: '',
-            title: '',
             body: '',
         });
     }
@@ -38,9 +36,8 @@ class CreatePost extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.handleClose();
-        this.props.handlePostSubmit({
+        this.props.handleCommentSubmit({
             user: this.state.user,
-            title: this.state.title,
             body: this.state.body,
             cityId: this.props.city._id,
         });
@@ -64,17 +61,6 @@ class CreatePost extends React.Component {
                                 name="user" 
                                 placeholder="What do we call you?"
                                 value={this.state.user}
-                                onChange={this.handleChange}
-                                />
-                        </Form.Group>
-
-                        <Form.Group controlId="title">
-                            <Form.Label>Title</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="title" 
-                                placeholder="What's this all about?"
-                                value={this.state.title}
                                 onChange={this.handleChange}
                                 />
                         </Form.Group>
@@ -110,4 +96,4 @@ class CreatePost extends React.Component {
     }
   }
   
-export default CreatePost;
+export default CreateComment;

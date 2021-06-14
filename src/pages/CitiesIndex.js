@@ -1,6 +1,7 @@
 import React from 'react';
 import CityModel from '../models/CityModel';
 import CityList from '../components/CityList';
+import PostModel from '../models/PostModel';
 
 import { Container } from "react-bootstrap";
 
@@ -34,6 +35,8 @@ class CitiesIndex extends React.Component {
 
     componentDidMount() {
         this.fetchCityData();
+        
+        
     }
 
     render() {

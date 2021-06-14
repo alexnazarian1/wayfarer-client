@@ -1,9 +1,9 @@
 import React from 'react';
 import PostModel from '../models/PostModel';
-import CommentModel from '../models/CommentModel';
 import { Link, Redirect } from 'react-router-dom';
 import DeletePostAlert from '../components/DeletePostAlert';
 import CommentList from '../components/CommentList'
+import PostItem from '../components/PostItem';
 
 class PostShow extends React.Component {
 
@@ -52,6 +52,7 @@ class PostShow extends React.Component {
         });
       });
   }
+  
 
   render() {
     if (this.state.error) {
