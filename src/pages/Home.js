@@ -5,14 +5,12 @@ import HomeArticle from '../components/HomeArticle'
 class Home extends React.Component {
 
   render() {
-
     return (
       <>
         <CarouselComp />
         <h1 className="home-title">Wayfarer is...</h1>
         <div className="article-container">
             <HomeArticle />
-         
         </div>
       </>
     );
