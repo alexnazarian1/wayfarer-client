@@ -79,7 +79,7 @@ class PostShow extends React.Component {
           title={this.state.post.title} 
           handleDeleteConfirm={this.handleDeleteConfirm}
         />
-          <CommentList comments={this.state.post.comments} />
+          <CommentList comments={this.state.post.comments} post={this.state.post} />
       </main>
     );
   }

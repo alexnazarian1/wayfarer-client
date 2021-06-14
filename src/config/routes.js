@@ -10,7 +10,7 @@ function Routes(props) {
     <Switch>
       <Route exact path='/' component={Home} />
       {/* <Route path='/login' component={Login} /> */}
-      <Route path='/cities' component={CitiesIndex} />
+      <Route path='/cities' component={CitiesIndex} /> 
       {/* <Route path='/createpost' component={CreatePost} /> */}
       <Route path='/posts/:id/edit' component={EditPost} />
       <Route path='/posts/:id' component={PostShow} />
