@@ -1,14 +1,12 @@
 import React from 'react';
 import CityModel from '../models/CityModel';
 import CityList from '../components/CityList';
-import PostModel from '../models/PostModel';
 
 import { Container } from "react-bootstrap";
 
 class CitiesIndex extends React.Component {
     state = {
         cities: [],
-        show: null,
         error: null,
     }
 
@@ -22,7 +20,6 @@ class CitiesIndex extends React.Component {
                 } else {
                     this.setState({
                         cities: response.data.cities,
-                        show: response.data.cities[0],
                     });
                 };
             })
@@ -35,8 +32,6 @@ class CitiesIndex extends React.Component {
 
     componentDidMount() {
         this.fetchCityData();
-        
-        
     }
 
     render() {

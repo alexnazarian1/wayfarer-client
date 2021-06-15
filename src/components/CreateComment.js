@@ -9,7 +9,6 @@ import { PlusCircle } from 'react-bootstrap-icons';
 class CreateComment extends React.Component {
     state = {
         show: false,
-        user: '',
         body: '',
         post: '',
     }
@@ -17,7 +16,6 @@ class CreateComment extends React.Component {
     handleClose = () => {
         this.setState({
             show: false,
-            user: '',
             body: '',
         });
     }
@@ -35,10 +33,11 @@ class CreateComment extends React.Component {
     }
 
     handleSubmit = (e) => {
+        const user = JSON.parse(localStorage.getItem('auth')).user;
         e.preventDefault();
         this.handleClose();
         this.props.handleCommentSubmit({
-            user: this.state.user,
+            user: user,
             body: this.state.body,
             post: this.props.post._id,
         });
@@ -54,16 +53,6 @@ class CreateComment extends React.Component {
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={this.handleSubmit}>
-                        <Form.Group controlId="user">
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="user" 
-                                placeholder="What do we call you?"
-                                value={this.state.user}
-                                onChange={this.handleChange}
-                                />
-                        </Form.Group>
 
                         <Form.Group controlId="body">
                             <Form.Label>What do you want to share?</Form.Label>

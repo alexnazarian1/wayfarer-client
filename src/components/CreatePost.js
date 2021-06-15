@@ -9,7 +9,6 @@ import { PlusCircle } from 'react-bootstrap-icons';
 class CreatePost extends React.Component {
     state = {
         show: false,
-        user: '',
         title: '',
         body: '',
     }
@@ -17,7 +16,6 @@ class CreatePost extends React.Component {
     handleClose = () => {
         this.setState({
             show: false,
-            user: '',
             title: '',
             body: '',
         });
@@ -37,9 +35,10 @@ class CreatePost extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        const user = JSON.parse(localStorage.getItem('auth')).user;
         this.handleClose();
         this.props.handlePostSubmit({
-            user: this.state.user,
+            user: user,
             title: this.state.title,
             body: this.state.body,
             cityId: this.props.city._id,
@@ -57,16 +56,6 @@ class CreatePost extends React.Component {
                 <Modal.Body>
               
                     <Form onSubmit={this.handleSubmit}>
-                        <Form.Group controlId="user">
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="user" 
-                                placeholder="What do we call you?"
-                                value={this.state.user}
-                                onChange={this.handleChange}
-                                />
-                        </Form.Group>
 
                         <Form.Group controlId="title">
                             <Form.Label>Title</Form.Label>
