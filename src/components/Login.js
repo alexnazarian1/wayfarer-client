@@ -1,4 +1,6 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -31,6 +33,7 @@ class Login extends React.Component {
     }
 
     render() {
+        { this.state.redirect && <Redirect to='/cities' /> }
         return (
             <Form onSubmit={this.handleSubmit}>
                 <h2><strong>Login</strong></h2>
