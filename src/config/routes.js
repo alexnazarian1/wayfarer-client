@@ -7,13 +7,12 @@ import EditPost from '../pages/EditPost';
 
 function Routes(props) {
   const protectedRoutes = (
-    <>
-    <Route path='/cities' component={CitiesIndex} />
-    <Route path='/posts/:id/edit' component={EditPost} />
-    <Route exact path='/posts/:id' component={PostShow} />
-    </>
+    <Switch>
+      <Route path='/cities' component={CitiesIndex} />
+      <Route path='/posts/:id/edit' component={EditPost} />
+      <Route exact path='/posts/:id' component={PostShow} />
+    </Switch>
   )
-  console.log('from routes', props);
   return (
     <Switch>
       <Route exact path='/' component={Home} />

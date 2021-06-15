@@ -12,19 +12,27 @@ class EditPost extends React.Component {
     user: '',
     body: '',
     redirect: false,
+    redirectAuth: false,
     error: null,
   }
 
   componentDidMount() {
+    const auth = JSON.parse(localStorage.getItem('auth'));
     PostModel.show(this.props.match.params.id)
       .then((data) => {
-        this.setState({
-          _id: data.post._id,
-          city: data.post.city,
-          title: data.post.title,
-          user: data.post.user,
-          body: data.post.body,
-        });
+        if (data.post.user === auth.user || auth.isAdmin) {
+          this.setState({
+            _id: data.post._id,
+            city: data.post.city,
+            title: data.post.title,
+            user: data.post.user,
+            body: data.post.body,
+          });
+        } else {
+          this.setState({
+            redirectAuth: true,
+          });
+        }
       })
   }
 
@@ -65,6 +73,9 @@ class EditPost extends React.Component {
     };
     if (this.state.redirect) {
       return <Redirect to={`/posts/${this.state._id}/`}/>
+    };
+    if (this.state.redirectAuth) {
+      return <Redirect to={'/cities'} />
     };
     if (this.state.city.length === 0) {
       return <h2>No post to edit</h2>
