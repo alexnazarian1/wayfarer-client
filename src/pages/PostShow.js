@@ -65,12 +65,8 @@ class PostShow extends React.Component {
     if (!this.state.post) {
       return <h2>No post found</h2>
     };
-    return (
-      <main>
-        <h2 className="post-title">{this.state.post.title}</h2>
-        <p className="city-name">-{this.state.post.city}-</p>
-        <p className="author">Author: {this.state.post.user}</p>
-        <p className="body">{this.state.post.body}</p>
+    const actionButtons = (
+      <>
         <Link to={`/posts/${this.state.post._id}/edit`}>
           <button className="post-btn custom-btn btn-16 edit">Edit Post</button>
         </Link>
@@ -80,6 +76,16 @@ class PostShow extends React.Component {
           title={this.state.post.title} 
           handleDeleteConfirm={this.handleDeleteConfirm}
         />
+      </>
+    )
+    const auth = JSON.parse(localStorage.getItem('auth'));
+    return (
+      <main>
+        <h2 className="post-title">{this.state.post.title}</h2>
+        <p className="city-name">-{this.state.post.city}-</p>
+        <p className="author">Author: {this.state.post.user}</p>
+        <p className="body">{this.state.post.body}</p>
+        { (auth.user === this.state.post.user || auth.isAdmin) && actionButtons }
         <div className="spacer"></div>
           <CommentList comments={this.state.post.comments} post={this.state.post} />
       </main>
