@@ -32,7 +32,7 @@ function NavBar(props) {
       <Navbar bg="dark" variant="dark" className="mb-4">
         <Container>
           <NavLink className="nav-link" exact to="/">
-            <Navbar.Brand> <img className="logo" src="https://www.pngix.com/pngfile/big/261-2612667_halloween-hello-kitty-hellokitty-sanrio-devil-hello-kitty.png" alt="" /> Wayfarer</Navbar.Brand></NavLink>
+            <Navbar.Brand> <img className="logo" src="https://static.vecteezy.com/system/resources/previews/001/209/180/original/horse-png.png" alt="logo" /> Wayfarer</Navbar.Brand></NavLink>
             <Nav className="ml-auto">
               { props.auth.user ? protectedLinks : loginLinks }
             </Nav>
