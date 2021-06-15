@@ -82,37 +82,38 @@ class EditPost extends React.Component {
     };
     return (
       <main>
-        <h2>Edit this Post</h2>
+        <h2 id='edit-post-header'>Edit this Post</h2>
 
-        <Form onSubmit={this.handleSubmit}>
+        <Form className='edit-post' onSubmit={this.handleSubmit}>
           
-          <div className="form-input">
-            <label htmlFor="city">City: {this.state.city}</label>
-          </div>
-          <div className="form-input">
-            <label htmlFor="user">Author: {this.state.user}</label>
-          </div>
-          <div className="form-input">
-            <label htmlFor="title">Title</label>
-            <input 
+          <Form.Group controlId='title'>
+              <Form.Label htmlFor="city">City: {this.state.city}</Form.Label>
+          </Form.Group>
+
+          <Form.Group controlId='author'>
+            <Form.Label htmlFor="user">Author: {this.state.user}</Form.Label>
+          </Form.Group>
+
+          <Form.Group controlId="title">
+            <Form.Label htmlFor="title">Title</Form.Label>
+            <Form.Control 
               type="text" 
               name="title" 
               onChange={this.handleChange}
               value={this.state.title} />
-          </div>
+          </Form.Group>
 
 
-          <div className="form-input">
-            <label htmlFor="body">Body</label>
-            <textarea 
-              type="text" 
+          <Form.Group controlId='body'>
+            <Form.Label htmlFor="body">Body</Form.Label>
+            <Form.Control 
+              as="textarea" 
               name="body" 
               onChange={this.handleChange}
-              value={this.state.body}>
-            </textarea>
-          </div>
+              value={this.state.body}/>
+          </Form.Group>
 
-          <button type="submit">Submit Edit</button>
+          <button className="post-btn custom-btn btn-16 submit" type="submit">Submit Edit</button>
         </Form>
       </main>
     );

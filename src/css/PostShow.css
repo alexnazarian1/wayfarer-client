@@ -3,7 +3,7 @@
 }
 
 main {
-  margin: 20px;
+  /* margin: 20px; */
   /* background-color: red; */
   text-align: center;
 }
@@ -72,6 +72,10 @@ p.body {
 
 .btn-16.edit:after {
   background-color: rgb(245, 225, 46);
+}
+
+.btn-16.submit:after {
+  background-color: rgb(23, 221, 16);
 }
 
 .btn-16:hover {
