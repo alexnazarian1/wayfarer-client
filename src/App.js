@@ -6,7 +6,8 @@ import Routes from './config/routes';
 import NavBar from './components/NavBar'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import './css/App.css';
+
 
 class App extends React.Component {
   state = {

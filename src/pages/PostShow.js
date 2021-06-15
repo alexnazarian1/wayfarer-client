@@ -5,6 +5,8 @@ import DeletePostAlert from '../components/DeletePostAlert';
 import CommentList from '../components/CommentList'
 import PostItem from '../components/PostItem';
 
+import '../css/PostShow.css';
+
 class PostShow extends React.Component {
 
   state = {
@@ -66,19 +68,20 @@ class PostShow extends React.Component {
     };
     return (
       <main>
-        <h2>{this.state.post.title}</h2>
-        <p>{this.state.post.city}</p>
-        <p>Author: {this.state.post.user}</p>
-        <p>{this.state.post.body}</p>
+        <h2 className="post-title">{this.state.post.title}</h2>
+        <p className="city-name">-{this.state.post.city}-</p>
+        <p className="author">Author: {this.state.post.user}</p>
+        <p className="body">{this.state.post.body}</p>
         <Link to={`/posts/${this.state.post._id}/edit`}>
-          <button>Edit Post</button>
+          <button className="post-btn custom-btn btn-16 edit">Edit Post</button>
         </Link>
-        <button onClick={this.handleDeleteClick}>Delete Post</button>
+        <button className="post-btn custom-btn btn-16" onClick={this.handleDeleteClick}>Delete Post</button>
         <DeletePostAlert 
           style={this.state.alertStyle}
           title={this.state.post.title} 
           handleDeleteConfirm={this.handleDeleteConfirm}
         />
+        <div className="spacer"></div>
           <CommentList comments={this.state.post.comments} post={this.state.post} />
       </main>
     );

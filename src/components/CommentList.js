@@ -3,6 +3,8 @@ import CommentItem from './CommentItem'
 import CommentModel from '../models/CommentModel';
 import CreateComment from './CreateComment'
 
+import '../css/Comment.css';
+
 class CommentList extends React.Component {
 
   state = {
