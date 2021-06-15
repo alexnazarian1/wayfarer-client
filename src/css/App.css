@@ -1,3 +1,7 @@
+.cities-index {
+  margin: 20px;
+}
+
 .mb-4, .my-4 {
   margin-bottom: 0!important;
 }
@@ -91,4 +95,25 @@ img.d-block.w-100 {
 
 .nav-link {
   padding: 0;
+}
+
+.edit-post {
+  width: 66%;
+  margin: auto;
+  text-align: left;
+  line-height: .5;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 525;
+}
+
+.edit-post button{
+  align-self: flex-end;
+  margin: 0;
+}
+
+#edit-post-header {
+  margin-top: 20px;
+  font-size: 30px;
 }

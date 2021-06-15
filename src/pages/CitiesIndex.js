@@ -37,7 +37,7 @@ class CitiesIndex extends React.Component {
     render() {
         if (this.state.cities.length === 0) return <h1>No Cities Found</h1>
         return (
-            <Container>
+            <Container className='cities-index'>
                 <CityList cities={this.state.cities} />
             </Container>
         );

@@ -51,7 +51,7 @@ class CreatePost extends React.Component {
             <PlusCircle className="posts-plus" onClick={this.handleShow} />
             <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add a Post for {this.props.city.name}</Modal.Title>
+                    <Modal.Title>Add a Post for <strong>{this.props.city.name}</strong></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
               
@@ -82,12 +82,12 @@ class CreatePost extends React.Component {
 
                         <Row>
                             <Col className="post-actions">
-                                <Button variant="secondary" onClick={this.handleClose}>
+                                <button className="post-btn custom-btn btn-16 delete" variant="secondary" onClick={this.handleClose}>
                                     Close
-                                </Button>
-                                <Button className="post-submit" type="submit" variant="primary">
+                                </button>
+                                <button className="post-btn custom-btn btn-16 submit" type="submit" variant="primary">
                                     Submit
-                                </Button>
+                                </button>
                             </Col>
                         </Row>
                     </Form>

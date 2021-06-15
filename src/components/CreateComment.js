@@ -68,12 +68,12 @@ class CreateComment extends React.Component {
 
                         <Row>
                             <Col className="post-actions">
-                                <Button variant="secondary" onClick={this.handleClose}>
+                                <button className="post-btn custom-btn btn-16 delete" variant="secondary" onClick={this.handleClose}>
                                     Close
-                                </Button>
-                                <Button className="post-submit" type="submit" variant="primary">
+                                </button>
+                                <button className="post-btn custom-btn btn-16 submit" type="submit" variant="primary">
                                     Submit
-                                </Button>
+                                </button>
                             </Col>
                         </Row>
                     </Form>
