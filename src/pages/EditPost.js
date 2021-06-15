@@ -1,6 +1,4 @@
 import React from 'react';
-import NavBar from '../components/NavBar';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import PostModel from '../models/PostModel';
 import { Redirect } from 'react-router-dom';
@@ -73,7 +71,7 @@ class EditPost extends React.Component {
     };
     return (
       <main>
-        <h2>Create a New Post</h2>
+        <h2>Edit this Post</h2>
 
         <Form onSubmit={this.handleSubmit}>
           

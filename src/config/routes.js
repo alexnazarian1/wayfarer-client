@@ -1,19 +1,23 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from '../pages/Home';
 import CitiesIndex from '../pages/CitiesIndex';
 import PostShow from '../pages/PostShow';
 import EditPost from '../pages/EditPost';
 
 function Routes(props) {
+  const protectedRoutes = (
+    <>
+    <Route path='/cities' component={CitiesIndex} />
+    <Route path='/posts/:id/edit' component={EditPost} />
+    <Route exact path='/posts/:id' component={PostShow} />
+    </>
+  )
+  console.log('from routes', props);
   return (
     <Switch>
       <Route exact path='/' component={Home} />
-      {/* <Route path='/login' component={Login} /> */}
-      <Route path='/cities' component={CitiesIndex} /> 
-      {/* <Route path='/createpost' component={CreatePost} /> */}
-      <Route path='/posts/:id/edit' component={EditPost} />
-      <Route path='/posts/:id' component={PostShow} />
+      { props.auth ? protectedRoutes : <Redirect to='/' />}
     </Switch>
   );
 }
