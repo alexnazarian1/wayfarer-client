@@ -3,7 +3,6 @@ import PostModel from '../models/PostModel';
 import { Link, Redirect } from 'react-router-dom';
 import DeletePostAlert from '../components/DeletePostAlert';
 import CommentList from '../components/CommentList'
-import PostItem from '../components/PostItem';
 
 import '../css/PostShow.css';
 

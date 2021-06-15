@@ -1,7 +1,6 @@
 import React from 'react';
 
 import UserModel from './models/UserModel';
-import CityModel from './models/CityModel';
 import Routes from './config/routes';
 import NavBar from './components/NavBar'
 

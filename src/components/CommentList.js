@@ -49,11 +49,11 @@ class CommentList extends React.Component {
     };
     const sortedComments = this.state.comments.sort((a,b) => Date.parse(b.createdAt)-Date.parse(a.createdAt));
     const commentItems = sortedComments.map(comment => {
-      return <CommentItem comment={comment} />
+      return <CommentItem key={comment._id} comment={comment} />
     });
     return (
       <div>
-        <div>
+        <div className="comment-header">
           <h3>Comments</h3>
           <CreateComment handleCommentSubmit={this.handleCommentSubmit} post={this.props.post}/>
         </div>
@@ -64,9 +64,3 @@ class CommentList extends React.Component {
 };
 
 export default CommentList;
-
-
-
-// const sortedPosts = this.state.posts.sort((a,b) => Date.parse(b.createdAt)-Date.parse(a.createdAt));
-//         const postItems = sortedPosts.map(post => {
-//             return <PostItem key={post._id} post={post}

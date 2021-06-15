@@ -1,20 +1,21 @@
-body {
-  /* color: red; */
-}
 
 .day-posted {
   font-style: italic;
 }
-
 .comment-container {
   margin-top: 10px;
   display: flex;
   justify-content: center;
   
 }
-
 .post.list-group-item {
   width: 75%;
   max-width: 1200px;
-  /* background-color: blueviolet; */
+}
+.comment-header {
+  display: flex;
+  justify-content: center;
+}
+.posts-plus {
+  margin-left: 10px;
 }
