@@ -45,7 +45,6 @@ class Signup extends React.Component {
             };
             UserModel.create(user)
                 .then(response => {
-                    console.log(response.data);
                     if (response.data.message) {
                         this.setState({
                             error: response.data.message,
