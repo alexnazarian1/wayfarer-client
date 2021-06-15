@@ -1,0 +1,87 @@
+* {
+  /* border: 1px red solid; */
+}
+
+main {
+  margin: 20px;
+  /* background-color: red; */
+  text-align: center;
+}
+
+.post-title {
+  font-size: 50px !important;
+}
+
+p.body {
+  margin-bottom: 20px;
+}
+
+.post-btn{
+  margin: 10px;
+  /* border-radius: 10px; */
+  width: 110px;
+}
+
+.author {
+  font-style: italic;
+  text-decoration: underline overline;
+}
+
+.city-name {
+  font-size: 25px;
+}
+
+.spacer {
+  height: 50px;
+}
+
+
+/* //////////////////////////////////////////// */
+
+.custom-btn {
+  width: 140px;
+  height: 45px;
+  padding: 10px 25px;
+  border: 2px solid #000;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.btn-16 {
+  background: #000;
+ color: #fff;
+ z-index: 1;
+}
+.btn-16:after {
+ position: absolute;
+ content: "";
+ width: 0;
+ height: 100%;
+ top: 0;
+ left: 0;
+ direction: rtl;
+ z-index: -1;
+ background: #fc0f0f;
+ transition: all 0.3s ease;
+}
+
+.btn-16.edit:after {
+  background-color: rgb(245, 225, 46);
+}
+
+.btn-16:hover {
+ color: #000;
+}
+.btn-16:hover:after {
+ left: auto;
+ right: 0;
+ width: 100%;
+}
+.btn-16:active {
+ top: 2px;
+}
